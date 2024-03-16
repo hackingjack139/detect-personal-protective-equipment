@@ -1,0 +1,15 @@
+names:
+- Hardhat
+- Mask
+- NO-Hardhat
+- NO-Mask
+- NO-Safety Vest
+- Person
+- Safety Cone
+- Safety Vest
+- machinery
+- vehicle
+nc: 10
+test: D:/Projects/detect-personal-protective-equipment/dataset\test
+train: D:/Projects/detect-personal-protective-equipment/dataset\train
+val: D:/Projects/detect-personal-protective-equipment/dataset\valid
