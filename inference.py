@@ -3,12 +3,23 @@ import cv2
 import cvzone
 import math
 
-VID_001 = 'sample-files/indianworkers.mp4'
-WEIGHTS = 'runs/detect/yolov8x.pt_ppe_100_epochs/weights/best.pt'
+VID_001 = 'sample-files/JapanPPE.mp4'
+WEIGHTS = 'runs/train/yolov8x.pt_ppe_100_epochs/weights/best.pt'
 CLASSES = ['Hardhat', 'Mask', 'NO-Hardhat', 'NO-Mask', 'NO-Safety Vest', 'Person', 'Safety Cone', 'Safety Vest', 'machinery', 'vehicle']
 CLASSES_TO_DETECT = [0, 2, 4, 5, 7]
 
 cap = cv2.VideoCapture(VID_001)
+
+# Define output video file name and codec
+output_file = 'output_video.mp4'
+fourcc = cv2.VideoWriter_fourcc(*'MP4V')
+
+# Get video frame size from the first frame
+frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+
+# Create VideoWriter object
+out = cv2.VideoWriter(output_file, fourcc, 30, (frame_width, frame_height))
 
 model = YOLO(WEIGHTS)
 
@@ -62,7 +73,7 @@ while True:
     for data in results:
         boxes = data.boxes
         for box in boxes:
-            # Extract class label (if using class-specific detection)
+            # Extract class label
             cls = int(box.cls[0])
             class_label = CLASSES[cls]
 
@@ -114,7 +125,10 @@ while True:
                 cv2.putText(img, f"{class_label}: {confidence:.2f}", text_position, cv2.FONT_HERSHEY_SIMPLEX,
                             0.7, color, 2)
 
-        # Display the image with bounding boxes
+        # Write frame to output video
+        out.write(img)
+
+        # Display the frame with bounding boxes
         cv2.imshow('Personal protective equipment detection', img)
 
         # Exit loop on 'q' press
@@ -123,4 +137,5 @@ while True:
 
 # Release resources
 cap.release()
+out.release()
 cv2.destroyAllWindows()

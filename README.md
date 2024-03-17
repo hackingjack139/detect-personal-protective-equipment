@@ -46,7 +46,12 @@ Classes in the dataset include:
 ```
 
 ## Setup
-YOLOv8x model was trained on the dataset for 100 epochs.
+YOLOv8x model was trained on the dataset for 100 epochs. Results of training - 
+![Alt text](runs/detect/yolov8x.pt_ppe_100_epochs/confusion_matrix.png)
+![Alt text](runs/detect/yolov8x.pt_ppe_100_epochs/results.png)
+
+## Inference
+To perform inference, update VID_001 with the file path of your video. Then, run the inference.py script to start the detection process.
 
 ## Next Steps:
 This project lays the groundwork for a real-time PPE detection system. Possible further enhancements include:
