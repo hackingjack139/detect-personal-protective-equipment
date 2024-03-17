@@ -1,7 +1,9 @@
 # Detect personal protective equipment (PPE) at a construction site
 
+
 # Introduction
 Construction sites present numerous hazards to workers, making it crucial to ensure the use of proper Personal Protective Equipment (PPE). This project focuses on leveraging computer vision to detect the presence or absence of essential PPE items such as hardhats and safety vests worn by workers in real-time. By providing timely alerts and monitoring, the system aims to mitigate safety risks and promote a safer working environment.
+
 
 ## Dataset
 Model was trained on the dataset provided by Roboflow [**here**](https://www.kaggle.com/datasets/snehilsanyal/construction-site-safety-image-dataset-roboflow).
@@ -19,6 +21,7 @@ Classes in the dataset include:
 - 'Safety Vest'
 - 'machinery'
 - 'vehicle'
+
 
 ## Folder structure
 
@@ -45,13 +48,18 @@ Classes in the dataset include:
 └───train-model.ipynb
 ```
 
-## Setup
+
+## Training Setup
 YOLOv8x model was trained on the dataset for 100 epochs. Results of training - 
-![Alt text](runs/detect/yolov8x.pt_ppe_100_epochs/confusion_matrix.png)
-![Alt text](runs/detect/yolov8x.pt_ppe_100_epochs/results.png)
+
+![Alt text](runs/train/yolov8x.pt_ppe_100_epochs/confusion_matrix.png)
+
+![Alt text](runs/train/yolov8x.pt_ppe_100_epochs/results.png)
+
 
 ## Inference
 To perform inference, update VID_001 with the file path of your video. Then, run the inference.py script to start the detection process.
+
 
 ## Next Steps:
 This project lays the groundwork for a real-time PPE detection system. Possible further enhancements include:
